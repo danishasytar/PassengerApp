@@ -1,1 +1,37 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="mainContent">
+<!--   <ion-header style="background-color:#3F0457;">
+    <ion-toolbar color="primary">
+      <ion-title> hahaha</ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+  <ion-content id="side-menu21" style="background-color:#387ef5;">
+    <ion-list no-lines id="side-menu21-list1" style="background-color:#387ef5;" no-shadow>
+      <ion-item color="primary" menuClose="" on-click="goToHome()" id="side-menu21-list-item1">
+        <ion-icon name="ios-home" item-left></ion-icon>
+        <strong>Home</strong>
+      </ion-item>
+      <ion-item  color="primary" menuClose="" on-click="goToMealOffering()" id="side-menu21-list-item2">
+        <ion-icon name="ios-cafe" item-left></ion-icon>
+        <strong>Meal offering</strong>
+      </ion-item>
+      <ion-item  color="primary" menuClose="" on-click="goToOurFacility()" id="side-menu21-list-item3">
+        <ion-icon name="ios-wifi" item-left></ion-icon>
+        <strong>Our Facility</strong>
+      </ion-item>
+      <ion-item  color="primary" menuClose="" on-click="goToOurFacility()" id="side-menu21-list-item4">
+        <ion-icon name="ios-wifi" item-left></ion-icon>
+        <strong>Our Facility</strong>
+      </ion-item>
+      <ion-item  color="primary" menuClose="" on-click="goToSampleComponent()" id="side-menu21-list-item5">
+        <ion-icon name="ionic" item-left></ion-icon>
+        <strong>#sample component</strong>
+      </ion-item>
+      <ion-item  color="primary" menuClose="" on-click="goToFeedback()" id="side-menu21-list-item6">
+        <ion-icon name="ios-chatbubbles" item-left></ion-icon>
+        <strong>Leave Feedback</strong>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #mainContent [root]="rootPage"></ion-nav>
