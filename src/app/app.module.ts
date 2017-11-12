@@ -10,7 +10,7 @@ import { SampleComponentPage } from '../pages/sample-component/sample-component'
 import { FeedbackPage } from '../pages/feedback/feedback';
 import { MealDetailAndOrderPage } from '../pages/meal-detail-and-order/meal-detail-and-order';
 import { FacilityDetailAndOrderPage } from '../pages/facility-detail-and-order/facility-detail-and-order';
-import { ModalPageModule } from '../pages/modal-page/modal-page.module';
+import { OrdeMenuModalModule } from '../pages/order-menu-modal/order-menu-modal.module';
 
 
 
@@ -32,7 +32,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    ModalPageModule
+    OrdeMenuModalModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

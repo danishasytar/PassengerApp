@@ -15,9 +15,9 @@
 
   <!-- <ion-col > -->
     <ion-card *ngFor="let player of heroes" id="mealOffering-list5" style="background-color: #e5e6e8;">
-    <ion-item color="none" on-click="goToMealDetailAndOrder()" id="mealOffering-list-item15" style="background-color: #e5e6e8;">
+    <ion-item color="none" on-click="goToMealDetailAndOrder(player)" id="mealOffering-list-item15" style="background-color: #e5e6e8;">
       <ion-thumbnail item-left>
-        <img src="assets/img/sZJt8WF2TeKsLCE5h4PF_22HC-meal-prep-fpr-2100-to-2400-calories.jpg" />
+        <img src={{player.url}} />
       </ion-thumbnail>
       <h2>
         {{player.name}}
