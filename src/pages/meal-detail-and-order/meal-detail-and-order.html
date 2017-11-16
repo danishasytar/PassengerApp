@@ -1,5 +1,5 @@
-<ion-header>
-  <ion-navbar>
+<ion-header no-border style=" background-image: linear-gradient(90deg, #ffffff,rgba(255, 255, 255, 0), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)">
+  <ion-navbar transparent >
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -7,28 +7,37 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content id="page7" no-padding>
-
+<ion-content no-margin id="page7" no-padding>
   <div style="height: 50%; background-size: cover; background-position: center;" [ngStyle]="{ 'background-image': 'url(' + imageURL + ')'}">
-
-
+    <div style=" height: 100%; background-color: rgba(255, 255, 255, .86);" *ngIf=!available >
+      <div style="position: absolute; top:25%; width: 100%; text-align: center; font-size: 2em; font-weight: bold;">Not Available</div>
+    </div>
   </div>
-<!--   <img src="assets/img/ijiiCXLOQnWnQjQ0moT4_22HC-meal-prep-fpr-2100-to-2400-calories.jpg" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" /> -->
   <div padding id="mealDetailAndOrder-markdown6" class="show-list-numbers-and-dots">
       <h3 id="sampleComponent-heading1" style="color:#000000; text-align: center">
-    Fresh Salad
+    {{name}}
   </h3>
     <p style="color:#000000;">
-     Simplicity is beautiful, and so is this garden salad with fresh romaine and iceberg lettuce, red cabbage, grated carrots, slice cucumber, grape tomatoes and a natural shredded Monterey Jack and cheddar cheese blend
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non mattis neque. Pellentesque dignissim, mi id tristique fringilla, dui magna congue arcu, ac iaculis est enim quis urna. Vivamus rhoncus massa sit amet mi venenatis vulputate. Etiam tortor lacus, hendrerit vel ipsum id, pulvinar aliquet ante. Morbi fringilla tellus in ante euismod gravida. Ut placerat dui ac imperdiet bibendum. Maecenas lacus est, fringilla eu maximus ut, pellentesque sit amet metus. Donec volutpat bibendum enim sit amet pulvinar. Vestibulum eros diam, condimentum sed ipsum vitae, auctor dignissim nibh. Etiam dapibus tempus lacus, eu vulputate ipsum egestas vel. Vivamus aliquet aliquam erat non dictum. In a convallis magna. Donec pellentesque urna at nunc molestie, sit amet imperdiet magna ultrices. Vivamus luctus, mi non venenatis molestie, mi augue consectetur nisi, vel tristique augue ligula non purus. Nullam mattis felis vitae tortor tempus suscipit. Fusce eu maximus felis.
     </p>
   </div>
+
+
+<div padding>
+    <button ion-button color="blue_opacity" block on-click="openBasicModal(available)">
+      Order This
+    </button>
+    <i>*If you want order this, get our floor saff to assist</i>
+  
+</div>
+
 </ion-content>
 
-<ion-footer >
+<!-- <ion-footer >
   <div style="padding: 10px;">
     <button id="login-button1" ion-button color="blue_opacity" block on-click="openBasicModal()">
       Order This
     </button>
-    <!-- <div class="spacer" style="height:40px;" id="login-spacer1"></div> -->
+    <div class="spacer" style="height:40px;" id="login-spacer1"></div>
 </div>
-</ion-footer>
+</ion-footer> -->

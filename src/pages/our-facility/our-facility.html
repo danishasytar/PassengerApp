@@ -8,39 +8,26 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page3">
-  <ion-list id="ourFacility-list6">
-    <ion-item color="none" on-click="goToFacilityDetailAndOrder()" id="ourFacility-list-item22">
+<ion-content id="page2">
+  <h3 padding-left id="mealOffering-heading2" style="color:#000000;">
+    Lunch Offering
+  </h3>
+    <ion-card *ngFor="let player of heroes" id="mealOffering-list5" style="background-color: #e5e6e8;">
+    <ion-item color="none" on-click="goToFacilityDetailAndOrder(player)" id="mealOffering-list-item15" style="background-color: #e5e6e8;">
       <ion-thumbnail item-left>
-        <img src="assets/img/pXqviOTGT6On5GIcxDyr_drum-pendant-lighting-with-ceilings-and-pool-table-lights-also-brick-wall-decor-and-beige-carpet-with-high-counter-chairs-for-game-room-ideas-in-cool-basements-300x300.jpg" />
+        <img src={{player.url}} />
       </ion-thumbnail>
       <h2>
-        Item
+        {{player.name}}
+          <p>
+          <ion-badge item-end *ngIf="player.status==true" color="secondary" >Available</ion-badge>
+          <ion-badge item-end *ngIf="player.status==false" color="dark">Currently Full</ion-badge>
+        </p>
       </h2>
+      <p>
+        <ion-badge no-margin item-end>{{player.type}}</ion-badge>
+      </p>
     </ion-item>
-    <ion-item color="none" id="ourFacility-list-item24">
-      <ion-thumbnail item-left>
-        <img src="assets/img/pXqviOTGT6On5GIcxDyr_drum-pendant-lighting-with-ceilings-and-pool-table-lights-also-brick-wall-decor-and-beige-carpet-with-high-counter-chairs-for-game-room-ideas-in-cool-basements-300x300.jpg" />
-      </ion-thumbnail>
-      <h2>
-        Item
-      </h2>
-    </ion-item>
-    <ion-item color="none" id="ourFacility-list-item25">
-      <ion-thumbnail item-left>
-        <img src="assets/img/pXqviOTGT6On5GIcxDyr_drum-pendant-lighting-with-ceilings-and-pool-table-lights-also-brick-wall-decor-and-beige-carpet-with-high-counter-chairs-for-game-room-ideas-in-cool-basements-300x300.jpg" />
-      </ion-thumbnail>
-      <h2>
-        Item
-      </h2>
-    </ion-item>
-    <ion-item color="none" id="ourFacility-list-item23">
-      <ion-thumbnail item-left>
-        <img src="assets/img/pXqviOTGT6On5GIcxDyr_drum-pendant-lighting-with-ceilings-and-pool-table-lights-also-brick-wall-decor-and-beige-carpet-with-high-counter-chairs-for-game-room-ideas-in-cool-basements-300x300.jpg" />
-      </ion-thumbnail>
-      <h2>
-        Item
-      </h2>
-    </ion-item>
-  </ion-list>
+  </ion-card>
+
 </ion-content>

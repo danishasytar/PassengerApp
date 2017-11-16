@@ -8,4 +8,34 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page1"></ion-content>
+
+
+<ion-content class="card-background-page">
+
+
+  <ion-card on-click="goToMealOffering()" style="color: black; background-size: cover; background-position: center;" [ngStyle]="{ 'background-image': 'url(assets/img/home/meal.jpg)'}">
+    <!-- <img src="assets/img/meal/1.jpg" style="background-size: cover;"/> -->
+    <div style="height: 100%; background-image: linear-gradient(0deg, #ffffff,rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)">
+    	<div padding class=" card-title">Meal</div>
+    </div>
+  </ion-card>
+
+  <ion-card on-click="goToOurFacility()"  style="color: black; background-size: cover; background-position: center;" [ngStyle]="{ 'background-image': 'url(assets/img/home/facility.jpg)'}">
+    <!-- <img src="assets/img/meal/1.jpg" style="background-size: cover;"/> -->
+    <div style="height: 100%; background-image: linear-gradient(0deg, #ffffff,rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)">
+    	<div padding class=" card-title">Facility</div>
+    </div>
+  </ion-card>
+
+  <ion-card on-click="goFlight()" style="color: black; background-size: cover; background-position: center;" [ngStyle]="{ 'background-image': 'url(assets/img/home/flight.webp)'}">
+    <!-- <img src="assets/img/meal/1.jpg" style="background-size: cover;"/> -->
+    <div style="height: 100%; background-image: linear-gradient(0deg, #ffffff,rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)">
+    	<div padding class=" card-title" ''>Flight Status</div>
+    </div>
+  </ion-card>
+
+
+
+</ion-content>
+
+

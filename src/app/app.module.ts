@@ -11,6 +11,9 @@ import { FeedbackPage } from '../pages/feedback/feedback';
 import { MealDetailAndOrderPage } from '../pages/meal-detail-and-order/meal-detail-and-order';
 import { FacilityDetailAndOrderPage } from '../pages/facility-detail-and-order/facility-detail-and-order';
 import { OrdeMenuModalModule } from '../pages/order-menu-modal/order-menu-modal.module';
+import { FlightPage } from '../pages/flight/flight';
+import { MealOfferingAllPage } from '../pages/meal-offering-all/meal-offering-all';
+
 
 
 
@@ -27,7 +30,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SampleComponentPage,
     FeedbackPage,
     MealDetailAndOrderPage,
-    FacilityDetailAndOrderPage
+    FacilityDetailAndOrderPage,
+    MealOfferingAllPage,
+    FlightPage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +49,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SampleComponentPage,
     FeedbackPage,
     MealDetailAndOrderPage,
-    FacilityDetailAndOrderPage
+    FacilityDetailAndOrderPage,
+    MealOfferingAllPage,
+    FlightPage
   ],
   providers: [
     StatusBar,

@@ -10,6 +10,10 @@ import { OurFacilityPage } from '../pages/our-facility/our-facility';
 import { FacilityDetailAndOrderPage } from '../pages/facility-detail-and-order/facility-detail-and-order';
 import { SampleComponentPage } from '../pages/sample-component/sample-component';
 import { FeedbackPage } from '../pages/feedback/feedback';
+import { MealOfferingAllPage } from '../pages/meal-offering-all/meal-offering-all';
+import { FlightPage } from '../pages/flight/flight';
+
+
 
 
 import { LoginPage } from '../pages/login/login';
@@ -52,5 +56,8 @@ export class MyApp {
   }goToFeedback(params){
     if (!params) params = {};
     this.navCtrl.setRoot(FeedbackPage);
+  }goFlight(params){
+    if (!params) params = {};
+    this.navCtrl.setRoot(FlightPage);
   }
 }

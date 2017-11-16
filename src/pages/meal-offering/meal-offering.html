@@ -12,15 +12,20 @@
   <h3 padding-left id="mealOffering-heading2" style="color:#000000;">
     Lunch Offering
   </h3>
-
-  <!-- <ion-col > -->
     <ion-card *ngFor="let player of heroes" id="mealOffering-list5" style="background-color: #e5e6e8;">
+       <div style="height: 100%; background-image: linear-gradient(0deg, #ffffff,rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)">
+    
+    </div>
     <ion-item color="none" on-click="goToMealDetailAndOrder(player)" id="mealOffering-list-item15" style="background-color: #e5e6e8;">
       <ion-thumbnail item-left>
         <img src={{player.url}} />
       </ion-thumbnail>
       <h2>
         {{player.name}}
+        <p>
+          <ion-badge item-end *ngIf="player.status==true" >Available</ion-badge>
+          <ion-badge item-end *ngIf="player.status==false" >Not Available</ion-badge>
+        </p>
       </h2>
       <p>
         <ion-badge no-margin item-end>{{player.type}}</ion-badge>
@@ -28,9 +33,16 @@
     </ion-item>
   </ion-card>
 
-  <!-- </ion-col> -->
 </ion-content>
 
-<!-- <ion-footer> 
-  <button ion-button>HAHAHA</button>
-</ion-footer>  -->
+<!-- <ion-footer>
+  <div class="row" style="background-color: #c5c8cc;">
+    <div class="col">
+      <button ion-button clear block small>Current Menu</button>
+    </div>   
+    <div class="col">
+      <button ion-button clear block small on-click="goToMealOfferingAll()">All menu</button>
+    </div>   
+  </div>
+</ion-footer> 
+ -->
