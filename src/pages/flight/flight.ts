@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the FlightPage page.
@@ -20,6 +21,10 @@ export class FlightPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FlightPage');
+  }
+  goHome(params){
+    if (!params) params = {};
+    this.navCtrl.setRoot(HomePage);
   }
 
 }

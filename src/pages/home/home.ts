@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, MenuController } from 'ionic-angular';
 import { MealOfferingPage } from '../meal-offering/meal-offering';
 import { OurFacilityPage } from '../our-facility/our-facility';
 import { FlightPage } from '../flight/flight';
@@ -12,7 +12,10 @@ import { FlightPage } from '../flight/flight';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+ 
+  constructor(public navCtrl: NavController, private menu: MenuController) {
+    this.menu = menu; 
+    this.menu.enable(false); 
   }
 
 
@@ -20,7 +23,7 @@ export class HomePage {
   goToMealOffering(params){
     if (!params) params = {};
     this.navCtrl.setRoot(MealOfferingPage);
-  }
+  } 
 
   goToOurFacility(params){
     if (!params) params = {};

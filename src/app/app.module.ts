@@ -19,6 +19,9 @@ import { MealOfferingAllPage } from '../pages/meal-offering-all/meal-offering-al
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { BaseurlProvider } from '../providers/baseurl/baseurl';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -37,6 +40,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpClientModule,
     OrdeMenuModalModule
   ],
   bootstrap: [IonicApp],
@@ -56,7 +60,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    BaseurlProvider
   ]
 })
 export class AppModule {}

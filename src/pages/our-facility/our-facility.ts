@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { FacilityDetailAndOrderPage } from '../facility-detail-and-order/facility-detail-and-order';
+import { HomePage } from '../home/home';
 
 @Component({
   selector: 'page-our-facility',
@@ -13,6 +14,11 @@ export class OurFacilityPage {
   goToFacilityDetailAndOrder(params){
     this.navCtrl.push(FacilityDetailAndOrderPage, {'myParam': params});
   }
+  goHome(params){
+    if (!params) params = {};
+    this.navCtrl.setRoot(HomePage);
+  }
+
 
   heroes = [
   {id: 1, name: "Business Center", type :"", url : "assets/img/facility/1.png", status:true},
