@@ -11,24 +11,21 @@
   </ion-navbar>
 </ion-header>
 <ion-content id="page2">
-  <h3 padding-left id="mealOffering-heading2" style="color:#000000;">
-    Lunch Offering
-  </h3>
-    <ion-card *ngFor="let player of heroes" id="mealOffering-list5" style="background-color: #e5e6e8;">
-    <ion-item color="none" id="mealOffering-list-item15" style="background-color: #e5e6e8;">
-      <ion-thumbnail item-left>
-        <img src={{player.url}} />
-      </ion-thumbnail>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing..."></ion-refresher-content>
+  </ion-refresher>
+  <ion-card *ngFor="let facility of facility" id="mealOffering-list5" style="background-color: #e5e6e8;">
+       <div style="height: 100%; background-image: linear-gradient(0deg, #ffffff,rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)">
+    </div>
+    <ion-item color="none" on-click="goToMealDetailAndOrder(facility)" id="mealOffering-list-item15" style="background-color: #e5e6e8;"> 
       <h2>
-        {{player.name}}
-          <p>
-          <ion-badge item-end *ngIf="player.status==true" color="secondary" >Available</ion-badge>
-          <ion-badge item-end *ngIf="player.status==false" color="dark">Currently Full</ion-badge>
-        </p>
+        {{facility.name}}
       </h2>
-      <p>
-        <ion-badge no-margin item-end>{{player.type}}</ion-badge>
-      </p>
+
     </ion-item>
   </ion-card>
 

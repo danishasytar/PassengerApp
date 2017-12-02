@@ -7,12 +7,9 @@ import { MealOfferingPage } from '../pages/meal-offering/meal-offering';
 import { OurFacilityPage } from '../pages/our-facility/our-facility';
 import { LoginPage } from '../pages/login/login';
 import { SampleComponentPage } from '../pages/sample-component/sample-component';
-import { FeedbackPage } from '../pages/feedback/feedback';
 import { MealDetailAndOrderPage } from '../pages/meal-detail-and-order/meal-detail-and-order';
 import { FacilityDetailAndOrderPage } from '../pages/facility-detail-and-order/facility-detail-and-order';
-import { OrdeMenuModalModule } from '../pages/order-menu-modal/order-menu-modal.module';
 import { FlightPage } from '../pages/flight/flight';
-import { MealOfferingAllPage } from '../pages/meal-offering-all/meal-offering-all';
 
 
 
@@ -31,17 +28,14 @@ import { HttpClientModule } from '@angular/common/http';
     OurFacilityPage,
     LoginPage,
     SampleComponentPage,
-    FeedbackPage,
     MealDetailAndOrderPage,
     FacilityDetailAndOrderPage,
-    MealOfferingAllPage,
     FlightPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule,
-    OrdeMenuModalModule
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -51,10 +45,8 @@ import { HttpClientModule } from '@angular/common/http';
     OurFacilityPage,
     LoginPage,
     SampleComponentPage,
-    FeedbackPage,
     MealDetailAndOrderPage,
     FacilityDetailAndOrderPage,
-    MealOfferingAllPage,
     FlightPage
   ],
   providers: [
