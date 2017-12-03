@@ -1,4 +1,4 @@
-import { Component , Input} from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, MenuController } from 'ionic-angular';
 import { MealOfferingPage } from '../meal-offering/meal-offering';
 import { OurFacilityPage } from '../our-facility/our-facility';

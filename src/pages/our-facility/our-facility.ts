@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController , AlertController} from 'ionic-angular';
 import { FacilityDetailAndOrderPage } from '../facility-detail-and-order/facility-detail-and-order';
 import { HomePage } from '../home/home';
 import { BaseurlProvider } from './../../providers/baseurl/baseurl';
@@ -13,14 +13,14 @@ export class OurFacilityPage {
 
   facility;
 
-  constructor(public navCtrl: NavController, public baseurl: BaseurlProvider, private http: HttpClient, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public baseurl: BaseurlProvider, private http: HttpClient, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
     this.getData();
-
-
   }
+
   goToFacilityDetailAndOrder(params){
     this.navCtrl.push(FacilityDetailAndOrderPage, {'myParam': params});
   }
+  
   goHome(params){
     if (!params) params = {};
     this.navCtrl.setRoot(HomePage);
@@ -39,7 +39,7 @@ export class OurFacilityPage {
 
     loading.present();
     var url = this.baseurl.baseurl();
-     this.http.get(url + '/api/facility',{} )
+     this.http.get(url + '/api/facility_type',{} )
           .subscribe(data => {
             this.facility = data;
             console.log(this.facility);
@@ -47,6 +47,11 @@ export class OurFacilityPage {
           }, err => {
             console.log(err);
             loading.dismiss();
+            let alert = this.alertCtrl.create({
+              title: 'Coonection problem, try again',
+              buttons: ['Dismiss']
+            });
+            alert.present();
 
     });
   }

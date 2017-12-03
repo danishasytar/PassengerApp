@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { NavParams, NavController, LoadingController } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
-import { NgStyle } from '@angular/common';
-import { AlertController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { BaseurlProvider } from './../../providers/baseurl/baseurl';
 
@@ -18,7 +16,7 @@ export class MealDetailAndOrderPage {
   meal;
   mealtype;
 
-  constructor(public navCtrl: NavController,  public baseurl: BaseurlProvider, public modalCtrl: ModalController, navParams: NavParams, private alertCtrl: AlertController , private http: HttpClient, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController,  public baseurl: BaseurlProvider, public modalCtrl: ModalController, navParams: NavParams,private http: HttpClient, public loadingCtrl: LoadingController) {
 
    	let myParam = navParams.get('myParam');
    	console.log(myParam)

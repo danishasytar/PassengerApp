@@ -1,13 +1,37 @@
-import { Component } from '@angular/core';
-import { NavParams, NavController } from 'ionic-angular';
+import { Component, ViewChild} from '@angular/core';
+import { NavParams, NavController, Slides } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
-import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'page-facility-detail-and-order',
   templateUrl: 'facility-detail-and-order.html'
 })
 export class FacilityDetailAndOrderPage {
+
+  @ViewChild('slider') slider: Slides;
+
+
+
+  slides = [
+    {
+      imageUrl: 'assets/img/lists/1.png',
+    },
+    {
+      imageUrl: 'assets/img/lists/2.png',
+    },
+    {
+      imageUrl: 'assets/img/lists/3.png',
+    },
+    {
+      imageUrl: 'assets/img/lists/4.png',
+    }
+  ];
+
+  onSlideChanged() {
+    const currentIndex = this.slider.getActiveIndex();
+    console.log('Slide changed! Current index is', currentIndex);
+  }
+
 
 	imageURL: string;
 	param: string;	
@@ -17,8 +41,15 @@ export class FacilityDetailAndOrderPage {
 
 		let myParam = navParams.get('myParam');
 		this.param = navParams.get('myParam');
-		console.log(myParam.url)
-		this.imageURL= myParam.url;
-		this.name = myParam.name
+		console.log(myParam.facility_type)
+		this.name = myParam.facility_type
 	}
+
+
+	alerMe() {
+		console.log("button clicked")
+	}
+
+
+
 }
