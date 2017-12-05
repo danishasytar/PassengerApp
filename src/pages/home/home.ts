@@ -44,7 +44,7 @@ export class HomePage {
   }
 
   gettime(): number {
-    var d = new Date("2017-12-02T23:30:51.01"); // for now
+    var d = new Date("2017-12-04T23:30:51.01"); 
     var d2 = new Date(); // for now
     console.log(d2)
     console.log(d)

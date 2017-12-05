@@ -42,7 +42,7 @@ export class FacilityDetailAndOrderPage {
 		let myParam = navParams.get('myParam');
 		this.param = navParams.get('myParam');
 		console.log(myParam.facility_type)
-		this.name = myParam.facility_type
+		this.name = myParam.facility_type;
 	}
 
 
