@@ -49,20 +49,6 @@ export class HomePage {
 
 
 
-      var data = {
-        "room_name": "string",
-        "passenger_name": "string",
-        "time_start": "string",
-        "time_end": "string",
-        "remarks": "string"
-      }
-
-        this.http.post('http://unwilled-children.000webhostapp.com/api/privateroom/add', JSON.stringify(data))
-        .subscribe(res => {
-          console.log(res);
-        }, (err) =>{
-          console.log(err);
-        });
 
   }
 
