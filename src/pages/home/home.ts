@@ -34,12 +34,7 @@ export class HomePage {
     this.menu = menu; 
     this.menu.enable(false); 
 
-    this.localNotifications.schedule({
-      text: 'your flight is board',
-      at: new Date(new Date().getTime() + 3600),
-      led: 'FF0000',
-      sound:null
-    }) 
+
 
                 this.flightnumber = window.localStorage.getItem('flight_number');
 
@@ -67,6 +62,16 @@ export class HomePage {
                           });
                           alert.present();
                       }
+
+                      this.localNotifications.schedule({
+                        title : 'Your Flight',
+                        text: 'to' + this.flightdata.to,
+                        icon: 'assets/img/icon.png',
+                        at: new Date(new Date().getTime() + 3600),
+                        led: 'FF0000',
+                        sound:null
+                      }) 
+
 
 
                 }, err => {
