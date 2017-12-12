@@ -6,6 +6,8 @@ import { FlightPage } from '../flight/flight';
 import { LoginPage } from '../login/login';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { HttpClient } from '@angular/common/http';
+import { BaseurlProvider } from './../../providers/baseurl/baseurl';
+
 
 
 
@@ -24,8 +26,11 @@ export interface CountdownTimer {
 })
 export class HomePage {
 
- flightdata;
-  constructor(private http: HttpClient, public navCtrl: NavController, private menu: MenuController, private alertCtrl: AlertController, private localNotifications: LocalNotifications) {
+ flights;
+  flightdata = {to: "", from: ""};
+ 
+ flightnumber;
+  constructor(private http: HttpClient,  public baseurl: BaseurlProvider, public navCtrl: NavController, private menu: MenuController, private alertCtrl: AlertController, private localNotifications: LocalNotifications) {
     this.menu = menu; 
     this.menu.enable(false); 
 
@@ -36,16 +41,38 @@ export class HomePage {
       sound:null
     }) 
 
-    
-    var flightnumber = localStorage.getItem('flightnumber');
-    if(flightnumber.toUpperCase() == "MH127" ){
-      this.flightdata = this.flightdataall[1]
-      
-    }
-    else if (flightnumber.toUpperCase()== "MH4") {
-    this.flightdata = this.flightdataall[0]  
-    }
+                this.flightnumber = window.localStorage.getItem('flight_number');
 
+
+          var url = this.baseurl.baseurl();
+           this.http.get(url + '/api/flight',{} )
+                .subscribe(data => {
+                  this.flights = data;
+                  console.log(this.flights);
+
+                      var flag = false
+                      for(var i=0;i<this.flights.length;i++){
+                        if(this.flightnumber.toUpperCase() == this.flights[i].flight_code){
+                          console.log("found")
+                          this.flightdata = this.flights[i];
+                          flag = true;
+                          break;
+                        }
+                      }
+
+                      if(!flag) {
+                          let alert = this.alertCtrl.create({
+                            title: 'Flight Number Not Found',
+                            buttons: ['Dismiss']
+                          });
+                          alert.present();
+                      }
+
+
+                }, err => {
+                  console.log(err);
+
+          });
 
 
 
