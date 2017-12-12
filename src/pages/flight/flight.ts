@@ -13,11 +13,24 @@ import { HomePage } from '../home/home';
 @Component({
   selector: 'page-flight',
   templateUrl: 'flight.html',
+
 })
 export class FlightPage {
+  flightdata;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, ) {
+    var flightnumber = localStorage.getItem('flightnumber');
+    if(flightnumber.toUpperCase() == "MH127" ){
+      this.flightdata = this.flightdataall[1]
+      
+    }
+    else if (flightnumber.toUpperCase()== "MH4") {
+    this.flightdata = this.flightdataall[0]  
+       }
+
   }
+ 
+  
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FlightPage');
@@ -26,5 +39,10 @@ export class FlightPage {
     if (!params) params = {};
     this.navCtrl.setRoot(HomePage);
   }
+
+flightdataall = [
+  {id: "MH4", from: "Kuala Lumpur", to: "London", departure: "11.30PM", gate: "G3"},
+  {id: "MH127", from: "Kuala Lumpur", to: "Perth", departure: "7.25PM", gate: "G7" },
+  ]
 
 }

@@ -13,11 +13,13 @@ import { FlightPage } from '../pages/flight/flight';
 
 
 
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { BaseurlProvider } from '../providers/baseurl/baseurl';
 import { HttpClientModule } from '@angular/common/http';
+
+import { LocalNotifications } from '@ionic-native/local-notifications';
+
 
 
 @NgModule({
@@ -31,6 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
     MealDetailAndOrderPage,
     FacilityDetailAndOrderPage,
     FlightPage
+
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,7 @@ import { HttpClientModule } from '@angular/common/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    LocalNotifications,
     BaseurlProvider
   ]
 })

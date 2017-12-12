@@ -48,6 +48,7 @@ export class MealDetailAndOrderPage {
     var url = this.baseurl.baseurl();
      this.http.get(url + '/api/meal/type_id/' + this.typeid,{} )
           .subscribe(data => {
+            
             this.meal = data;
             console.log(this.meal);
             loading.dismiss();

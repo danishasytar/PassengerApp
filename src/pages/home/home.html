@@ -6,18 +6,22 @@
     <ion-title>
       Home
     </ion-title>
+    <ion-buttons start>
+      <button  ion-button  color="black"  (click)="logout()" >Logout</button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
-
 
 <ion-content class="card-background-page">
 
 <div padding-left padding-top>
-  <h6 no-margin>Departure to XXX</h6>
+  <h6 no-margin>Time Before Departure to {{flightdata.to}}</h6>
   <h2 no-margin>{{timer.displayTime}}</h2>
+
+
 </div>
 
-  <ion-card on-click="goToMealOffering()" style="color: black; background-size: cover; background-position: center;" [ngStyle]="{ 'background-image': 'url(assets/img/home/meal.jpg)'}">
+    <ion-card on-click="goToMealOffering()" style="color: black; background-size: cover; background-position: center;" [ngStyle]="{ 'background-image': 'url(assets/img/home/meal.jpg)'}">
     <!-- <img src="assets/img/meal/1.jpg" style="background-size: cover;"/> -->
     <div style="height: 100%; background-image: linear-gradient(0deg, #ffffff,rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)">
     	<div padding class=" card-title">Meal</div>
@@ -37,7 +41,6 @@
     	<div padding class=" card-title">Flight Status</div>
     </div>
   </ion-card>
-
 
 
 </ion-content>

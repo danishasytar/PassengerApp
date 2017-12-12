@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, MenuController } from 'ionic-angular';
+import { NavController, MenuController, LoadingController, AlertController } from 'ionic-angular';
 import { MealOfferingPage } from '../meal-offering/meal-offering';
 import { OurFacilityPage } from '../our-facility/our-facility';
 import { FlightPage } from '../flight/flight';
+import { LoginPage } from '../login/login';
+import { LocalNotifications } from '@ionic-native/local-notifications';
+import { HttpClient } from '@angular/common/http';
+
 
 
 export interface CountdownTimer {
@@ -20,13 +24,67 @@ export interface CountdownTimer {
 })
 export class HomePage {
 
- 
-  constructor(public navCtrl: NavController, private menu: MenuController) {
+ flightdata;
+  constructor(private http: HttpClient, public navCtrl: NavController, private menu: MenuController, private alertCtrl: AlertController, private localNotifications: LocalNotifications) {
     this.menu = menu; 
     this.menu.enable(false); 
+
+    this.localNotifications.schedule({
+      text: 'your flight is board',
+      at: new Date(new Date().getTime() + 3600),
+      led: 'FF0000',
+      sound:null
+    }) 
+
+    
+    var flightnumber = localStorage.getItem('flightnumber');
+    if(flightnumber.toUpperCase() == "MH127" ){
+      this.flightdata = this.flightdataall[1]
+      
+    }
+    else if (flightnumber.toUpperCase()== "MH4") {
+    this.flightdata = this.flightdataall[0]  
+    }
+
+
+
+
+      var data = {
+        "room_name": "string",
+        "passenger_name": "string",
+        "time_start": "string",
+        "time_end": "string",
+        "remarks": "string"
+      }
+
+        this.http.post('http://unwilled-children.000webhostapp.com/api/privateroom/add', JSON.stringify(data))
+        .subscribe(res => {
+          console.log(res);
+        }, (err) =>{
+          console.log(err);
+        });
+
   }
 
+ flightdataall = [
+  {id: "MH4", from: "Kuala Lumpur", to: "London", departure: "2017-12-11T23:30:51.01", gate: "G3"},
+  {id: "MH127", from: "Kuala Lumpur", to: "Perth", departure: "2017-12-1T23:30:51.01", gate: "G7" },
+  ]
 
+logout() {
+    //Api Token Logout
+    localStorage.clear();
+    this.menu.enable(false);
+    setTimeout(() => this.navCtrl.setRoot(LoginPage), 1000);
+    let alert = this.alertCtrl.create({
+    title: 'Thank You ',
+    subTitle: 'Please Come Again',
+    buttons: ['Dismiss']
+  });
+  alert.present();
+  this.navCtrl.setRoot(LoginPage);
+ }
+ 
 
   goToMealOffering(params){
     if (!params) params = {};
@@ -44,10 +102,8 @@ export class HomePage {
   }
 
   gettime(): number {
-    var d = new Date("2017-12-04T23:30:51.01"); 
+    var d = new Date("2017-12-11T23:50:51.01");
     var d2 = new Date(); // for now
-    console.log(d2)
-    console.log(d)
     return (d.getTime()-d2.getTime())/1000;
 
   }
@@ -119,5 +175,5 @@ export class HomePage {
     return hoursString + ':' + minutesString + ':' + secondsString;
   }
 
-  
+   
 }

@@ -25,6 +25,8 @@ export class MyApp {
   @ViewChild(Nav) navCtrl: Nav;
     rootPage:any = LoginPage;
 
+  
+
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -56,3 +58,8 @@ export class MyApp {
     this.navCtrl.setRoot(FlightPage);
   }
 }
+
+  
+
+
+
