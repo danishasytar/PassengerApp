@@ -27,7 +27,7 @@ export interface CountdownTimer {
 export class HomePage {
 
  flights;
-  flightdata = {to: "", from: ""};
+  flightdata = {to: "", from: "", departure:""};
  
  flightnumber;
   constructor(private http: HttpClient,  public baseurl: BaseurlProvider, public navCtrl: NavController, private menu: MenuController, private alertCtrl: AlertController, private localNotifications: LocalNotifications) {
@@ -65,7 +65,7 @@ export class HomePage {
 
                       this.localNotifications.schedule({
                         title : 'Your Flight',
-                        text: 'to' + this.flightdata.to,
+                        text: 'to ' + this.flightdata.to+'. At '+ this.flightdata.departure,
                         icon: 'assets/img/icon.png',
                         at: new Date(new Date().getTime() + 3600),
                         led: 'FF0000',
@@ -120,7 +120,7 @@ logout() {
   }
 
   gettime(): number {
-    var d = new Date("2017-12-11T23:50:51.01");
+    var d = new Date("2017-12-14T11:30:00.01");
     var d2 = new Date(); // for now
     return (d.getTime()-d2.getTime())/1000;
 

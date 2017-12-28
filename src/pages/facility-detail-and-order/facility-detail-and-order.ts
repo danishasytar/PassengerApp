@@ -1,6 +1,9 @@
 import { Component, ViewChild} from '@angular/core';
 import { NavParams, NavController, Slides } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
+import { BaseurlProvider } from './../../providers/baseurl/baseurl';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'page-facility-detail-and-order',
@@ -36,13 +39,34 @@ export class FacilityDetailAndOrderPage {
 	imageURL: string;
 	param: string;	
 	name: string;
-
-	constructor(public navCtrl: NavController,  public modalCtrl: ModalController, navParams: NavParams) {
+  facility;
+	constructor(public navCtrl: NavController,  private http: HttpClient, public baseurl: BaseurlProvider, public modalCtrl: ModalController, navParams: NavParams) {
 
 		let myParam = navParams.get('myParam');
 		this.param = navParams.get('myParam');
-		console.log(myParam.facility_type)
-		this.name = myParam.facility_type;
+		console.log(myParam)
+
+
+
+      var url = this.baseurl.baseurl();
+       this.http.get(url + '/api/facility_type/'+myParam.id,{} )
+            .subscribe(data => {
+              this.facility = data;
+              console.log(this.facility);
+                          
+            }, err => {
+              console.log(err);
+
+      });
+
+    this.name = myParam.facility_type;
+
+
+      this.slides = [
+        {
+          imageUrl: myParam.image_url,
+        }
+      ]
 	}
 
 
