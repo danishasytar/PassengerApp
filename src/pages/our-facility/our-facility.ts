@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, LoadingController , AlertController} from 'ionic-angular';
 import { FacilityDetailAndOrderPage } from '../facility-detail-and-order/facility-detail-and-order';
 import { HomePage } from '../home/home';
-import { BaseurlProvider } from './../../providers/baseurl/baseurl';
 import { HttpClient } from '@angular/common/http';
+import { ApiProvider } from './../../providers/api/api';
+
 
 @Component({
   selector: 'page-our-facility',
@@ -13,7 +14,7 @@ export class OurFacilityPage {
 
   facility;
 
-  constructor(public navCtrl: NavController, public baseurl: BaseurlProvider, private http: HttpClient, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
+  constructor(public api:ApiProvider, public navCtrl: NavController, private http: HttpClient, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
     this.getData();
   }
 
@@ -38,9 +39,8 @@ export class OurFacilityPage {
     });
 
     loading.present();
-    var url = this.baseurl.baseurl();
-     this.http.get(url + '/api/facility_type',{} )
-          .subscribe(data => {
+     this.api.getdata('/api/facility_type',{} )
+          .then(data => {
             this.facility = data;
             console.log(this.facility);
             loading.dismiss();

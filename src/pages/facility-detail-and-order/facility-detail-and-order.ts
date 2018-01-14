@@ -1,8 +1,8 @@
 import { Component, ViewChild} from '@angular/core';
 import { NavParams, NavController, Slides } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
-import { BaseurlProvider } from './../../providers/baseurl/baseurl';
-import { HttpClient } from '@angular/common/http';
+import { ApiProvider } from './../../providers/api/api';
+
 
 
 @Component({
@@ -40,7 +40,7 @@ export class FacilityDetailAndOrderPage {
 	param: string;	
 	name: string;
   facility;
-	constructor(public navCtrl: NavController,  private http: HttpClient, public baseurl: BaseurlProvider, public modalCtrl: ModalController, navParams: NavParams) {
+	constructor(public api:ApiProvider, public navCtrl: NavController, public modalCtrl: ModalController, navParams: NavParams) {
 
 		let myParam = navParams.get('myParam');
 		this.param = navParams.get('myParam');
@@ -48,9 +48,8 @@ export class FacilityDetailAndOrderPage {
 
 
 
-      var url = this.baseurl.baseurl();
-       this.http.get(url + '/api/facility_type/'+myParam.id,{} )
-            .subscribe(data => {
+       this.api.getdata('/api/facility_type/'+myParam.id,{} )
+            .then(data => {
               this.facility = data;
               console.log(this.facility);
                           

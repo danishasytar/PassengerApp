@@ -2,8 +2,8 @@ import { Component,  } from '@angular/core';
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { MealDetailAndOrderPage } from '../meal-detail-and-order/meal-detail-and-order';
 import { HomePage } from '../home/home';
-import { BaseurlProvider } from './../../providers/baseurl/baseurl';
-import { HttpClient } from '@angular/common/http';
+import { ApiProvider } from './../../providers/api/api';
+
 
 
 
@@ -15,7 +15,7 @@ export class MealOfferingPage {
 
   mealtype;
 
-  constructor(public navCtrl: NavController, public baseurl: BaseurlProvider, private http: HttpClient, public loadingCtrl: LoadingController, private alertCtrl: AlertController) {
+  constructor(public api: ApiProvider, public navCtrl: NavController, public loadingCtrl: LoadingController, private alertCtrl: AlertController) {
     this.getData();
   }
   
@@ -41,9 +41,8 @@ export class MealOfferingPage {
     });
 
       loading.present();
-      var url = this.baseurl.baseurl();
-       this.http.get(url + '/api/type_meal',{} )
-            .subscribe(data => {
+       this.api.getdata('/api/type_meal',{} )
+            .then(data => {
               this.mealtype = data;
               console.log(this.mealtype);
               loading.dismiss();

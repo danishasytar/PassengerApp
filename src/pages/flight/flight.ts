@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams , AlertController } from 'ionic-angular';
 import { HomePage } from '../home/home';
-import { BaseurlProvider } from './../../providers/baseurl/baseurl';
-import { HttpClient } from '@angular/common/http';
+import { ApiProvider } from './../../providers/api/api';
+
 
 
 
@@ -23,7 +23,7 @@ export class FlightPage {
   flightdata = {flight_code: ""};
   flightnumber;
   flights;
-  constructor( private http: HttpClient, public navCtrl: NavController, public baseurl: BaseurlProvider, public navParams: NavParams, private alertCtrl: AlertController ) {
+  constructor( public api:ApiProvider, public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController ) {
     // var flightnumber = localStorage.getItem('flightnumber');
     // if(flightnumber.toUpperCase() == "MH127" ){
     //   this.flightdata = this.flightdataall[1]
@@ -32,12 +32,11 @@ export class FlightPage {
     // else if (flightnumber.toUpperCase()== "MH4") {
     // this.flightdata = this.flightdataall[0]  
     //    }
-            this.flightnumber = window.localStorage.getItem('flight_number');
+          //   this.flightnumber = window.localStorage.getItem('flight_number');
 
 
-          var url = this.baseurl.baseurl();
-           this.http.get(url + '/api/flight',{} )
-                .subscribe(data => {
+           this.api.getdata('/api/flight',{} )
+                .then(data => {
                   this.flights = data;
                   console.log(this.flights);
 

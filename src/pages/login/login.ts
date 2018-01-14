@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { HomePage } from '../home/home';
 import { NavController, MenuController, LoadingController, AlertController } from 'ionic-angular';
-import { HttpClient } from '@angular/common/http';
-import { BaseurlProvider } from './../../providers/baseurl/baseurl';
-
+import { ApiProvider } from './../../providers/api/api';
 
 
 
@@ -15,20 +13,15 @@ export class LoginPage {
   flights;
   flightnumber;
 
+      constructor(public navCtrl: NavController, public api: ApiProvider, private alertCtrl: AlertController) {
 
-
-      constructor(public navCtrl: NavController,  public baseurl: BaseurlProvider, private alertCtrl: AlertController, private http: HttpClient) {
-
-          var url = this.baseurl.baseurl();
-           this.http.get(url + '/api/flight',{} )
-                .subscribe(data => {
+          let data = {};
+          this.api.getdata('/api/flight', data)
+                .then(data => {
                   this.flights = data;
                   console.log(this.flights);
-
-
                 }, err => {
                   console.log(err);
-
           });
       }
 

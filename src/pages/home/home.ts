@@ -5,8 +5,8 @@ import { OurFacilityPage } from '../our-facility/our-facility';
 import { FlightPage } from '../flight/flight';
 import { LoginPage } from '../login/login';
 import { LocalNotifications } from '@ionic-native/local-notifications';
-import { HttpClient } from '@angular/common/http';
-import { BaseurlProvider } from './../../providers/baseurl/baseurl';
+import { ApiProvider } from './../../providers/api/api';
+
 
 
 
@@ -30,18 +30,17 @@ export class HomePage {
   flightdata = {to: "", from: "", departure:""};
  
  flightnumber;
-  constructor(private http: HttpClient,  public baseurl: BaseurlProvider, public navCtrl: NavController, private menu: MenuController, private alertCtrl: AlertController, private localNotifications: LocalNotifications) {
+  constructor(public api:ApiProvider , public navCtrl: NavController, private menu: MenuController, private alertCtrl: AlertController, private localNotifications: LocalNotifications) {
     this.menu = menu; 
     this.menu.enable(false); 
 
 
 
-                this.flightnumber = window.localStorage.getItem('flight_number');
+          this.flightnumber = window.localStorage.getItem('flight_number');
 
 
-          var url = this.baseurl.baseurl();
-           this.http.get(url + '/api/flight',{} )
-                .subscribe(data => {
+           this.api.getdata('/api/flight',{} )
+                .then(data => {
                   this.flights = data;
                   console.log(this.flights);
 

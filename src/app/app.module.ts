@@ -15,10 +15,14 @@ import { FlightPage } from '../pages/flight/flight';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { BaseurlProvider } from '../providers/baseurl/baseurl';
 import { HttpClientModule } from '@angular/common/http';
 
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { ApiProvider } from '../providers/api/api';
+import { HTTP} from '@ionic-native/http';
+import { Device} from '@ionic-native/device';
+
+
 
 
 
@@ -57,7 +61,9 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LocalNotifications,
-    BaseurlProvider
+    HTTP,
+    Device,
+    ApiProvider
   ]
 })
 export class AppModule {}
