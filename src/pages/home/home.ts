@@ -28,7 +28,8 @@ export class HomePage {
 
  flights;
   flightdata = {to: "", from: "", departure:""};
- 
+  displaytime = false;
+
  flightnumber;
   constructor(public api:ApiProvider , public navCtrl: NavController, private menu: MenuController, private alertCtrl: AlertController, private localNotifications: LocalNotifications) {
     this.menu = menu; 
@@ -49,7 +50,9 @@ export class HomePage {
                         if(this.flightnumber.toUpperCase() == this.flights[i].flight_code){
                           console.log("found")
                           this.flightdata = this.flights[i];
+                          this.startCountdown();
                           flag = true;
+
                           break;
                         }
                       }
@@ -77,7 +80,6 @@ export class HomePage {
                   console.log(err);
 
           });
-
 
 
 
@@ -119,8 +121,10 @@ logout() {
   }
 
   gettime(): number {
-    var d = new Date("2017-12-14T11:30:00.01");
+    var d = new Date(this.flightdata.departure);
     var d2 = new Date(); // for now
+    console.log(d)
+    console.log(d2)
     return (d.getTime()-d2.getTime())/1000;
 
   }
@@ -128,9 +132,15 @@ logout() {
   timeInSeconds: number = this.gettime();
   timer: CountdownTimer;
 
-  ngOnInit() {
+  startCountdown() {
+    this.timeInSeconds = this.gettime();
     this.initTimer();
     this.startTimer();
+  }
+
+  ngOnInit(){
+    // this.initTimer();
+    // this.startTimer();
   }
 
   hasFinished() {
@@ -157,13 +167,7 @@ logout() {
     this.timerTick();
   }
 
-  pauseTimer() {
-    this.timer.runTimer = false;
-  }
 
-  resumeTimer() {
-    this.startTimer();
-  }
 
   timerTick() {
     setTimeout(() => {
@@ -175,6 +179,8 @@ logout() {
       } else {
         this.timer.hasFinished = true;
       }
+console.log(this.timer.displayTime)
+this.displaytime = true;
     }, 1000);
   }
 

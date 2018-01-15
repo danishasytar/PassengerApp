@@ -32,7 +32,7 @@ export class FlightPage {
     // else if (flightnumber.toUpperCase()== "MH4") {
     // this.flightdata = this.flightdataall[0]  
     //    }
-          //   this.flightnumber = window.localStorage.getItem('flight_number');
+            this.flightnumber = window.localStorage.getItem('flight_number');
 
 
            this.api.getdata('/api/flight',{} )
